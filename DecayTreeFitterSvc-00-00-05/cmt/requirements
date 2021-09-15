@@ -1,0 +1,20 @@
+package DecayTreeFitterSvc
+version v00r00
+author Liang Liu <liangzy@mail.ustc.edu.cn>
+
+use BesPolicy       BesPolicy-01-*
+use GaudiInterface  GaudiInterface-01-* External
+use BesCLHEP        BesCLHEP-*          External
+use VertexFit		VertexFit-* 		Analysis
+
+
+apply_pattern installed_linkopts
+
+macro_append DecayTreeFitterSvc_cppflags " -w  -std=c++0x -I /ustcfs/BES3User/2018/lliu/software/eigen/eigen-3.3.9"
+library DecayTreeFitterSvc *.cc *.cxx *.cpp components/*.cxx test/*.cxx
+
+apply_pattern package_linkopts
+apply_pattern package_stamps
+apply_pattern ld_library_path
+
+apply_pattern package_shlibflags
